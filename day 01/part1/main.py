@@ -5,7 +5,7 @@ file_path = os.path.join(script_dir, "input.txt")
 
 # open file
 with open(file_path, "r") as file:
-    lst = file.readlines()
+    lst = [line.rstrip() for line in file.readlines()]
 
     # answer variable
     ans = 0
@@ -16,7 +16,7 @@ with open(file_path, "r") as file:
 
     # parse original list
     for item in lst:
-        a, b = item.rstrip().split()
+        a, b = item.split()
         lst1.append(int(a))
         lst2.append(int(b))
 

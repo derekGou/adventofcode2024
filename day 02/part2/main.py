@@ -6,17 +6,21 @@ file_path = os.path.join(script_dir, "input.txt")
 # open file
 with open(file_path, "r") as file:
     ans = 0
-    lst = file.readlines()
+    lst = [line.rstrip() for line in file.readlines()]
     for line in lst:
+        # parse input
         my_line = list(map(int, line.split()))
         my_bool = None
         sorted_line = my_line.copy()
         sorted_line.sort()
+        # check if initial conditions are met
         if my_line == sorted_line or my_line[::-1] == sorted_line:
             my_bool = True
             for i in range(1, len(my_line)):
                 if abs(my_line[i]-my_line[i-1])>3 or abs(my_line[i]-my_line[i-1])<1:
                     my_bool = False
+        
+        # popping and checking again - unoptimized
         if my_bool!=True:
             my_bool = None
             for x in range(len(my_line)):

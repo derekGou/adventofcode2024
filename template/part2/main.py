@@ -5,4 +5,4 @@ file_path = os.path.join(script_dir, "input.txt")
 
 # open file
 with open(file_path, "r") as file:
-    lst = file.readlines()
+    lst = [line.rstrip() for line in file.readlines()]
